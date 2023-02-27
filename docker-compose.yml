@@ -1,0 +1,26 @@
+version: "3.1"
+
+services:
+  porsandb:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+
+  pg-admin:
+    image: dpage/pgadmin4:6
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@porsan.ir
+      - PGADMIN_DEFAULT_PASSWORD=UMb<qnVwph(cMnhXz4gG
+      - PGADMIN_LISTEN_PORT=5050
+    restart: always    
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./data/pgadmin-data:/var/lib/pgadmin
+
